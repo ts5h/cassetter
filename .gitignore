@@ -1,5 +1,21 @@
+.idea
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+*.tsbuildinfo
+
+# misc
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# original definition
 .DS_Store
-node_modules
 .env
 .env.build
 data
