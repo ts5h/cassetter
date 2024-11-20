@@ -31,13 +31,6 @@
     }
   }
 
-  h1 {
-    width: 100%;
-    font-size: inherit;
-    margin: 0;
-    text-align: center;
-  }
-
   svg {
     max-width: 300px;
     margin-bottom: 20px;
