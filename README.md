@@ -9,11 +9,14 @@ Powered by [ToneJS](https://tonejs.github.io/), [Svelte](https://svelte.dev/) an
 ## Installation
 
 ```sh
+# Install Yarn
+npm install -g yarn
+
 # Install dependencies
-npm install
+yarn install
 
 # Start the app
-npm run dev
+yarn dev
 ```
 
 or [download](https://person0b.itch.io/cassetter)
