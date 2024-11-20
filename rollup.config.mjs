@@ -27,7 +27,6 @@ export default {
         const { code, frame } = warning;
 
         // NOTE: Ignore some warnings temporarily
-        if (code === 'css-unused-selector') return;
         if (code === 'a11y-mouse-events-have-key-events') return;
         if (code === 'a11y-label-has-associated-control') return;
         if (code === 'a11y-no-static-element-interactions') return;

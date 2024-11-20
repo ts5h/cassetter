@@ -2007,15 +2007,15 @@ var app = (function () {
 				attr_dev(path, "stroke-linejoin", "round");
 				attr_dev(path, "stroke-width", "15");
 				attr_dev(path, "d", "M60 120a60 60 0 0160-60 60 60 0 0160 60 60 60 0 01-60 60 60 60 0\r\n    01-60-60m180 30a30 30 0 0130-30 30 30 0 0130 30 30 30 0 01-30 30 30 30 0\r\n    01-30-30m-120 30h150m-120");
-				attr_dev(path, "class", "svelte-l7rx0g");
+				attr_dev(path, "class", "svelte-1bwf3oh");
 				add_location(path, file$c, 6, 2, 111);
 				attr_dev(svg, "xmlns", "http://www.w3.org/2000/svg");
 				attr_dev(svg, "fill", "none");
 				attr_dev(svg, "baseProfile", "full");
 				attr_dev(svg, "viewBox", "0 0 360 200");
-				attr_dev(svg, "class", "svelte-l7rx0g");
+				attr_dev(svg, "class", "svelte-1bwf3oh");
 				add_location(svg, file$c, 0, 0, 0);
-				attr_dev(span, "class", "svelte-l7rx0g");
+				attr_dev(span, "class", "svelte-1bwf3oh");
 				add_location(span, file$c, 16, 0, 414);
 			},
 			l: function claim(nodes) {
