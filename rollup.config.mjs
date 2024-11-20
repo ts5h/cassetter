@@ -19,6 +19,16 @@ export default {
       dev: !production,
       css: css => {
         css.write('bundle.css');
+      },
+      onwarn: (warning, handler) => {
+        const { code, frame } = warning;
+
+        // Ignore some warnings temporarily
+        if (code === 'css-unused-selector') return;
+        if (code === 'a11y-mouse-events-have-key-events') return;
+        if (code === 'a11y-label-has-associated-control') return;
+
+        handler(warning);
       }
     }),
     resolve({
