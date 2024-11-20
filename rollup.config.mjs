@@ -28,7 +28,6 @@ export default {
 
         // NOTE: Ignore some warnings temporarily
         if (code === 'a11y-mouse-events-have-key-events') return;
-        if (code === 'a11y-label-has-associated-control') return;
         if (code === 'a11y-no-static-element-interactions') return;
 
         handler(warning);

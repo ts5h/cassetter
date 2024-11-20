@@ -3185,20 +3185,22 @@ var app = (function () {
 				add_location(span1, file$7, 44, 4, 1170);
 				attr_dev(span2, "class", "split svelte-1nnwdqk");
 				add_location(span2, file$7, 48, 4, 1347);
+				attr_dev(label_1, "for", "range");
 				attr_dev(label_1, "class", "svelte-1nnwdqk");
 				toggle_class(label_1, "current", /*$currentKnob*/ ctx[4] === /*knob*/ ctx[0]);
 				add_location(label_1, file$7, 49, 4, 1381);
 				attr_dev(div0, "class", "info svelte-1nnwdqk");
 				add_location(div0, file$7, 43, 2, 1146);
+				attr_dev(input_1, "name", "range");
 				attr_dev(input_1, "type", "range");
 				attr_dev(input_1, "min", "0");
 				attr_dev(input_1, "max", "35");
 				input_1.value = /*value*/ ctx[3];
 				attr_dev(input_1, "step", "1");
 				attr_dev(input_1, "class", "svelte-1nnwdqk");
-				add_location(input_1, file$7, 52, 4, 1507);
+				add_location(input_1, file$7, 52, 4, 1519);
 				attr_dev(div1, "class", "range svelte-1nnwdqk");
-				add_location(div1, file$7, 51, 2, 1455);
+				add_location(div1, file$7, 51, 2, 1467);
 				attr_dev(div2, "class", "root svelte-1nnwdqk");
 				add_location(div2, file$7, 42, 0, 1124);
 			},
