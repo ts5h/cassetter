@@ -1,10 +1,13 @@
 import svelte from 'rollup-plugin-svelte';
 import livereload from 'rollup-plugin-livereload';
+import css from 'rollup-plugin-css-only';
 import commonjs from '@rollup/plugin-commonjs';
 import resolve from '@rollup/plugin-node-resolve';
 import terser from "@rollup/plugin-terser";
 
 const production = !process.env.ROLLUP_WATCH;
+
+// Reference: https://github.com/sveltejs/rollup-plugin-svelte?tab=readme-ov-file
 
 export default {
   input: 'src/App.js',
@@ -19,9 +22,7 @@ export default {
       compilerOptions: {
         dev: !production
       },
-      css: css => {
-        css.write('bundle.css');
-      },
+      emitCss: true,
       onwarn: (warning, handler) => {
         const { code, frame } = warning;
 
@@ -32,6 +33,9 @@ export default {
 
         handler(warning);
       }
+    }),
+    css({
+      output: 'bundle.css'
     }),
     resolve({
       browser: true,
