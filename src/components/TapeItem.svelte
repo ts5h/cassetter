@@ -49,8 +49,8 @@
   <TapeHeader {tape} {channel} />
   {#if $currentChannel === channel}
     <div
-      in:slide={{ delay: 0, duration: 300 }}
-      out:slide={{ delay: 0, duration: 300 }}>
+      in:slide|global={{ delay: 0, duration: 300 }}
+      out:slide|global={{ delay: 0, duration: 300 }}>
       <TapeInfo {channel} />
     </div>
   {/if}

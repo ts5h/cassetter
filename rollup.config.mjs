@@ -1,7 +1,7 @@
 import svelte from 'rollup-plugin-svelte';
-import resolve from 'rollup-plugin-node-resolve';
-import commonjs from 'rollup-plugin-commonjs';
 import livereload from 'rollup-plugin-livereload';
+import commonjs from '@rollup/plugin-commonjs';
+import resolve from '@rollup/plugin-node-resolve';
 import terser from "@rollup/plugin-terser";
 
 const production = !process.env.ROLLUP_WATCH;
@@ -16,7 +16,9 @@ export default {
   },
   plugins: [
     svelte({
-      dev: !production,
+      compilerOptions: {
+        dev: !production
+      },
       css: css => {
         css.write('bundle.css');
       },
@@ -33,6 +35,8 @@ export default {
     }),
     resolve({
       browser: true,
+      exportConditions: ['svelte'],
+      extensions: ['.svelte']
     }),
     commonjs(),
     !production && livereload('public'),
