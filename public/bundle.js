@@ -2006,9 +2006,9 @@ var app = (function () {
 				attr_dev(path, "stroke-linecap", "round");
 				attr_dev(path, "stroke-linejoin", "round");
 				attr_dev(path, "stroke-width", "15");
-				attr_dev(path, "d", "M60 120a60 60 0 0160-60 60 60 0 0160 60 60 60 0 01-60 60 60 60 0\n    01-60-60m180 30a30 30 0 0130-30 30 30 0 0130 30 30 30 0 01-30 30 30 30 0\n    01-30-30m-120 30h150m-120");
+				attr_dev(path, "d", "M60 120a60 60 0 0160-60 60 60 0 0160 60 60 60 0 01-60 60 60 60 0\r\n    01-60-60m180 30a30 30 0 0130-30 30 30 0 0130 30 30 30 0 01-30 30 30 30 0\r\n    01-30-30m-120 30h150m-120");
 				attr_dev(path, "class", "svelte-1bwf3oh");
-				add_location(path, file$c, 6, 2, 105);
+				add_location(path, file$c, 6, 2, 111);
 				attr_dev(svg, "xmlns", "http://www.w3.org/2000/svg");
 				attr_dev(svg, "fill", "none");
 				attr_dev(svg, "baseProfile", "full");
@@ -2016,7 +2016,7 @@ var app = (function () {
 				attr_dev(svg, "class", "svelte-1bwf3oh");
 				add_location(svg, file$c, 0, 0, 0);
 				attr_dev(span, "class", "svelte-1bwf3oh");
-				add_location(span, file$c, 16, 0, 398);
+				add_location(span, file$c, 16, 0, 414);
 			},
 			l: function claim(nodes) {
 				throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");

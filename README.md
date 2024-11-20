@@ -1,4 +1,4 @@
-# cassetter
+# Forked Cassetter
 
 Cassetter is a MIDI controlled granular sampler. It was created as a companion application to the livecoding environment [ORCΛ](https://github.com/hundredrabbits/Orca).
 
