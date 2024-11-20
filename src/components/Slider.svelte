@@ -47,12 +47,11 @@
       <span class="value">{vel}</span>
     </span>
     <span class="split">|</span>
-    <label class:current={$currentKnob === knob} for="range">{label}</label>
+    <label class:current={$currentKnob === knob}>{label}</label>
   </div>
   <div class="range" on:mouseover={onMouseover}>
     <input
       bind:this={input}
-      name="range"
       type="range"
       min="0"
       max="35"

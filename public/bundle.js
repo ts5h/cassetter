@@ -2006,9 +2006,9 @@ var app = (function () {
 				attr_dev(path, "stroke-linecap", "round");
 				attr_dev(path, "stroke-linejoin", "round");
 				attr_dev(path, "stroke-width", "15");
-				attr_dev(path, "d", "M60 120a60 60 0 0160-60 60 60 0 0160 60 60 60 0 01-60 60 60 60 0\r\n    01-60-60m180 30a30 30 0 0130-30 30 30 0 0130 30 30 30 0 01-30 30 30 30 0\r\n    01-30-30m-120 30h150m-120");
+				attr_dev(path, "d", "M60 120a60 60 0 0160-60 60 60 0 0160 60 60 60 0 01-60 60 60 60 0\n    01-60-60m180 30a30 30 0 0130-30 30 30 0 0130 30 30 30 0 01-30 30 30 30 0\n    01-30-30m-120 30h150m-120");
 				attr_dev(path, "class", "svelte-1bwf3oh");
-				add_location(path, file$c, 6, 2, 111);
+				add_location(path, file$c, 6, 2, 105);
 				attr_dev(svg, "xmlns", "http://www.w3.org/2000/svg");
 				attr_dev(svg, "fill", "none");
 				attr_dev(svg, "baseProfile", "full");
@@ -2016,7 +2016,7 @@ var app = (function () {
 				attr_dev(svg, "class", "svelte-1bwf3oh");
 				add_location(svg, file$c, 0, 0, 0);
 				attr_dev(span, "class", "svelte-1bwf3oh");
-				add_location(span, file$c, 16, 0, 414);
+				add_location(span, file$c, 16, 0, 398);
 			},
 			l: function claim(nodes) {
 				throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -2100,9 +2100,9 @@ var app = (function () {
 				t2 = space();
 				span = element("span");
 				span.textContent = "(press Ctrl or Cmd + f)";
-				add_location(button, file$b, 18, 0, 354);
+				add_location(button, file$b, 18, 0, 336);
 				attr_dev(span, "class", "svelte-hl76bk");
-				add_location(span, file$b, 19, 0, 419);
+				add_location(span, file$b, 19, 0, 400);
 			},
 			l: function claim(nodes) {
 				throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -2334,19 +2334,19 @@ var app = (function () {
 				button1.textContent = "X";
 				attr_dev(span0, "class", "channel svelte-29p2l3");
 				toggle_class(span0, "play", /*$chPlay*/ ctx[2][/*channel*/ ctx[1]]);
-				add_location(span0, file$a, 21, 2, 380);
+				add_location(span0, file$a, 21, 2, 359);
 				attr_dev(span1, "class", "split svelte-29p2l3");
-				add_location(span1, file$a, 24, 2, 510);
+				add_location(span1, file$a, 24, 2, 486);
 				attr_dev(button0, "class", "name svelte-29p2l3");
 				toggle_class(button0, "active", /*$currentChannel*/ ctx[3] === /*channel*/ ctx[1]);
-				add_location(button0, file$a, 25, 2, 542);
+				add_location(button0, file$a, 25, 2, 517);
 				attr_dev(span2, "class", "split svelte-29p2l3");
-				add_location(span2, file$a, 32, 2, 682);
+				add_location(span2, file$a, 32, 2, 650);
 				attr_dev(button1, "class", "remove");
 				toggle_class(button1, "hide", !/*tape*/ ctx[0].name);
-				add_location(button1, file$a, 33, 2, 714);
+				add_location(button1, file$a, 33, 2, 681);
 				attr_dev(div, "class", "svelte-29p2l3");
-				add_location(div, file$a, 20, 0, 371);
+				add_location(div, file$a, 20, 0, 351);
 			},
 			l: function claim(nodes) {
 				throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -2548,7 +2548,7 @@ var app = (function () {
 			c: function create() {
 				li = element("li");
 				li.textContent = "LOADING...";
-				add_location(li, file$9, 66, 4, 1607);
+				add_location(li, file$9, 66, 4, 1541);
 			},
 			m: function mount(target, anchor) {
 				insert_dev(target, li, anchor);
@@ -2669,8 +2669,8 @@ var app = (function () {
 				t1 = space();
 				attr_dev(button, "class", "svelte-1q1j3mf");
 				toggle_class(button, "current", /*i*/ ctx[11] === /*currentSample*/ ctx[1]);
-				add_location(button, file$9, 56, 8, 1368);
-				add_location(li, file$9, 55, 6, 1354);
+				add_location(button, file$9, 56, 8, 1312);
+				add_location(li, file$9, 55, 6, 1299);
 			},
 			m: function mount(target, anchor) {
 				insert_dev(target, li, anchor);
@@ -2739,9 +2739,9 @@ var app = (function () {
 				ul = element("ul");
 				if_block.c();
 				attr_dev(h2, "class", "svelte-1q1j3mf");
-				add_location(h2, file$9, 51, 0, 1267);
+				add_location(h2, file$9, 51, 0, 1216);
 				attr_dev(ul, "class", "svelte-1q1j3mf");
-				add_location(ul, file$9, 52, 0, 1291);
+				add_location(ul, file$9, 52, 0, 1239);
 			},
 			l: function claim(nodes) {
 				throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -2919,9 +2919,9 @@ var app = (function () {
 				canvas_1 = element("canvas");
 				attr_dev(canvas_1, "class", "svelte-1swa3ap");
 				add_render_callback(() => /*canvas_1_elementresize_handler*/ ctx[7].call(canvas_1));
-				add_location(canvas_1, file$8, 84, 2, 2204);
+				add_location(canvas_1, file$8, 84, 2, 2120);
 				attr_dev(div, "class", "svelte-1swa3ap");
-				add_location(div, file$8, 83, 0, 2195);
+				add_location(div, file$8, 83, 0, 2112);
 			},
 			l: function claim(nodes) {
 				throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -3179,30 +3179,28 @@ var app = (function () {
 				t10 = space();
 				t11 = text(t11_value);
 				attr_dev(span0, "class", "value svelte-1nnwdqk");
-				add_location(span0, file$7, 46, 6, 1296);
+				add_location(span0, file$7, 46, 6, 1250);
 				attr_dev(span1, "class", "knob svelte-1nnwdqk");
 				toggle_class(span1, "current", /*$currentKnob*/ ctx[4] === /*knob*/ ctx[0]);
-				add_location(span1, file$7, 44, 4, 1170);
+				add_location(span1, file$7, 44, 4, 1126);
 				attr_dev(span2, "class", "split svelte-1nnwdqk");
-				add_location(span2, file$7, 48, 4, 1347);
-				attr_dev(label_1, "for", "range");
+				add_location(span2, file$7, 48, 4, 1299);
 				attr_dev(label_1, "class", "svelte-1nnwdqk");
 				toggle_class(label_1, "current", /*$currentKnob*/ ctx[4] === /*knob*/ ctx[0]);
-				add_location(label_1, file$7, 49, 4, 1381);
+				add_location(label_1, file$7, 49, 4, 1332);
 				attr_dev(div0, "class", "info svelte-1nnwdqk");
-				add_location(div0, file$7, 43, 2, 1146);
-				attr_dev(input_1, "name", "range");
+				add_location(div0, file$7, 43, 2, 1103);
 				attr_dev(input_1, "type", "range");
 				attr_dev(input_1, "min", "0");
 				attr_dev(input_1, "max", "35");
 				input_1.value = /*value*/ ctx[3];
 				attr_dev(input_1, "step", "1");
 				attr_dev(input_1, "class", "svelte-1nnwdqk");
-				add_location(input_1, file$7, 52, 4, 1519);
+				add_location(input_1, file$7, 52, 4, 1455);
 				attr_dev(div1, "class", "range svelte-1nnwdqk");
-				add_location(div1, file$7, 51, 2, 1467);
+				add_location(div1, file$7, 51, 2, 1404);
 				attr_dev(div2, "class", "root svelte-1nnwdqk");
-				add_location(div2, file$7, 42, 0, 1124);
+				add_location(div2, file$7, 42, 0, 1082);
 			},
 			l: function claim(nodes) {
 				throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -3501,7 +3499,7 @@ var app = (function () {
 			c: function create() {
 				li = element("li");
 				create_component(slider.$$.fragment);
-				add_location(li, file$6, 15, 4, 260);
+				add_location(li, file$6, 15, 4, 245);
 			},
 			m: function mount(target, anchor) {
 				insert_dev(target, li, anchor);
@@ -3562,7 +3560,7 @@ var app = (function () {
 				li = element("li");
 				create_component(slider.$$.fragment);
 				t = space();
-				add_location(li, file$6, 20, 4, 374);
+				add_location(li, file$6, 20, 4, 354);
 			},
 			m: function mount(target, anchor) {
 				insert_dev(target, li, anchor);
@@ -3645,7 +3643,7 @@ var app = (function () {
 				}
 
 				attr_dev(ul, "class", "svelte-f5ne87");
-				add_location(ul, file$6, 13, 0, 212);
+				add_location(ul, file$6, 13, 0, 199);
 			},
 			l: function claim(nodes) {
 				throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -4132,7 +4130,7 @@ var app = (function () {
 				div = element("div");
 				create_component(tapeinfo.$$.fragment);
 				attr_dev(div, "class", "svelte-17bbopt");
-				add_location(div, file$5, 20, 4, 490);
+				add_location(div, file$5, 20, 4, 470);
 			},
 			m: function mount(target, anchor) {
 				insert_dev(target, div, anchor);
@@ -4208,7 +4206,7 @@ var app = (function () {
 				if (if_block) if_block.c();
 				attr_dev(li, "class", "svelte-17bbopt");
 				toggle_class(li, "active", /*$currentChannel*/ ctx[2] === /*channel*/ ctx[1]);
-				add_location(li, file$5, 17, 0, 365);
+				add_location(li, file$5, 17, 0, 348);
 			},
 			l: function claim(nodes) {
 				throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -4455,7 +4453,7 @@ var app = (function () {
 				}
 
 				attr_dev(ul, "class", "svelte-9ccbt1");
-				add_location(ul, file$4, 21, 0, 520);
+				add_location(ul, file$4, 21, 0, 499);
 			},
 			l: function claim(nodes) {
 				throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -4603,7 +4601,7 @@ var app = (function () {
 				t0 = text("MIDI: ");
 				t1 = text(/*cmsg*/ ctx[0]);
 				attr_dev(div, "class", "svelte-138p89o");
-				add_location(div, file$3, 59, 0, 1272);
+				add_location(div, file$3, 59, 0, 1213);
 			},
 			l: function claim(nodes) {
 				throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -4756,7 +4754,7 @@ var app = (function () {
 				t2 = text(" | ");
 				t3 = text(/*updMsg*/ ctx[1]);
 				attr_dev(div, "class", "svelte-138p89o");
-				add_location(div, file$2, 55, 0, 1163);
+				add_location(div, file$2, 55, 0, 1108);
 			},
 			l: function claim(nodes) {
 				throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -4899,7 +4897,7 @@ var app = (function () {
 				div = element("div");
 				create_component(midi.$$.fragment);
 				attr_dev(div, "class", "svelte-1iiot0w");
-				add_location(div, file$1, 6, 0, 112);
+				add_location(div, file$1, 6, 0, 106);
 			},
 			l: function claim(nodes) {
 				throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -4981,7 +4979,7 @@ var app = (function () {
 				section = element("section");
 				create_component(selectfolder.$$.fragment);
 				attr_dev(section, "class", "tape_folder svelte-3wzge7");
-				add_location(section, file, 17, 4, 410);
+				add_location(section, file, 17, 4, 393);
 			},
 			m: function mount(target, anchor) {
 				insert_dev(target, section, anchor);
@@ -5029,7 +5027,7 @@ var app = (function () {
 				section = element("section");
 				create_component(tapelist.$$.fragment);
 				attr_dev(section, "class", "tape_list");
-				add_location(section, file, 13, 4, 330);
+				add_location(section, file, 13, 4, 317);
 			},
 			m: function mount(target, anchor) {
 				insert_dev(target, section, anchor);
@@ -5091,7 +5089,7 @@ var app = (function () {
 				t = space();
 				create_component(master.$$.fragment);
 				attr_dev(main, "class", "svelte-3wzge7");
-				add_location(main, file, 11, 0, 294);
+				add_location(main, file, 11, 0, 283);
 			},
 			l: function claim(nodes) {
 				throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");

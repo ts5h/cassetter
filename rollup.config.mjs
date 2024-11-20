@@ -24,9 +24,10 @@ export default {
       },
       emitCss: true,
       onwarn: (warning, handler) => {
-        const { code, frame } = warning;
+        const { code } = warning;
 
-        // NOTE: Ignore some warnings temporarily
+        // NOTE: Suppress warnings because some behavior changes when they are fixed
+        if (code === 'a11y-label-has-associated-control') return;
         if (code === 'a11y-mouse-events-have-key-events') return;
         if (code === 'a11y-no-static-element-interactions') return;
 
