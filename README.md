@@ -19,8 +19,6 @@ yarn install
 yarn dev
 ```
 
-or [download](https://person0b.itch.io/cassetter)
-
 ## Usage
 
 First you need to select the folder in which the required samples are stored in the wav format. Now you can select a sample for each channel.
