@@ -1,9 +1,9 @@
 <script>
   // Svelte
-  import { onMount, afterUpdate } from "svelte";
+  import { onMount, afterUpdate } from 'svelte';
 
   // Store
-  import { tapes } from "../stores/tapes.js";
+  import { tapes } from '../stores/tapes.js';
 
   // Model
   export let channel;
@@ -21,7 +21,7 @@
     return outputX;
   };
 
-  const computeRMS = width => {
+  const computeRMS = (width) => {
     let array = $tapes[channel].player.buffer.toArray(0);
     const length = 64;
     const rmses = [];
@@ -38,14 +38,14 @@
       rmses[i] = rms;
     }
     const max = Math.max(...rmses);
-    waveform = rmses.map(v => scale(Math.pow(v, 0.8), 0, max, 0, 1));
+    waveform = rmses.map((v) => scale(Math.pow(v, 0.8), 0, max, 0, 1));
   };
 
   $: if (canvas) {
     canvas.width = canvasW * 2;
     canvas.height = canvasH * 2;
     const { width, height } = canvas;
-    const context = canvas.getContext("2d");
+    const context = canvas.getContext('2d');
     context.clearRect(0, 0, width, height);
     computeRMS(width);
 
@@ -74,12 +74,20 @@
       // const x = $tapes[channel].player.reverse ? width - i : i;
       const x = i;
       context.fillStyle =
-        contextLoopStart > x || x > contextLoopEnd ? "#444444" : "#ffffff";
+        contextLoopStart > x || x > contextLoopEnd ? '#444444' : '#ffffff';
       context.fillRect(x, height / 2 - barHeight / 2, 2, barHeight);
       context.fill();
     });
   }
 </script>
+
+<div>
+  <canvas
+    bind:this={canvas}
+    bind:clientWidth={canvasW}
+    bind:clientHeight={canvasH}
+  />
+</div>
 
 <style>
   div {
@@ -92,10 +100,3 @@
     height: 100%;
   }
 </style>
-
-<div>
-  <canvas
-    bind:this={canvas}
-    bind:clientWidth={canvasW}
-    bind:clientHeight={canvasH} />
-</div>

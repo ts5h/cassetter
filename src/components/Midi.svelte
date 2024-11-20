@@ -1,10 +1,10 @@
 <script>
   // Svelte
-  import { onMount } from "svelte";
+  import { onMount } from 'svelte';
 
   // Stores
-  import { tapes } from "../stores/tapes.js";
-  import { chPlay } from "../stores/ui.js";
+  import { tapes } from '../stores/tapes.js';
+  import { chPlay } from '../stores/ui.js';
 
   // Model
   let cmsg = `none`;
@@ -12,7 +12,7 @@
   let midi;
 
   // Methods
-  const onMessage = msg => {
+  const onMessage = (msg) => {
     if (msg.data[0] >= 176 && msg.data[0] < 184) {
       const ch = msg.data[0] - 176;
       const knob = msg.data[1] - 64;
@@ -34,7 +34,7 @@
     }
   };
 
-  const access = midiAccess => {
+  const access = (midiAccess) => {
     const inputs = midiAccess.inputs.values();
     devices = [];
     for (let i = inputs.next(); i && !i.done; i = inputs.next()) {
@@ -45,7 +45,7 @@
 
   const refresh = () => {
     if (!navigator.requestMIDIAccess) return;
-    navigator.requestMIDIAccess().then(access, err => {
+    navigator.requestMIDIAccess().then(access, (err) => {
       cmsg = `No Midi`;
     });
   };
@@ -57,11 +57,11 @@
   });
 </script>
 
+<div>MIDI: {cmsg}</div>
+
 <style>
   div {
     margin: 0;
     color: var(--f_med);
   }
 </style>
-
-<div>MIDI: {cmsg}</div>

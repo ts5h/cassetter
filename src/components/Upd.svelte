@@ -1,14 +1,14 @@
 <script>
   // Svelte
-  import { onMount } from "svelte";
+  import { onMount } from 'svelte';
 
   // Libs
-  const dgram = require("dgram");
-  import base36 from "../libs/base36.js";
+  const dgram = require('dgram');
+  import base36 from '../libs/base36.js';
 
   // Stores
-  import { tapes } from "../stores/tapes.js";
-  import { chPlay } from "../stores/ui.js";
+  import { tapes } from '../stores/tapes.js';
+  import { chPlay } from '../stores/ui.js';
 
   // Model
   let status = `none`;
@@ -16,7 +16,7 @@
   let PORT = 49161;
 
   // Methods
-  const onUpdMsg = msg => {
+  const onUpdMsg = (msg) => {
     const values = msg.split(``);
     const ch = base36.indexOf(values[0]);
     const knob = base36.indexOf(values[1]);
@@ -31,20 +31,20 @@
   // Lifecicle
   onMount(() => {
     status = `creating...`;
-    const server = dgram.createSocket("udp4");
+    const server = dgram.createSocket('udp4');
 
-    server.on("error", err => {
+    server.on('error', (err) => {
       console.error(err);
       server.close();
       updMsg = `error`;
     });
 
-    server.on("message", msg => {
-      onUpdMsg(msg.toString("utf-8"));
-      updMsg = msg.toString("utf-8");
+    server.on('message', (msg) => {
+      onUpdMsg(msg.toString('utf-8'));
+      updMsg = msg.toString('utf-8');
     });
 
-    server.on("listening", () => {
+    server.on('listening', () => {
       status = `listening`;
     });
 
@@ -53,11 +53,11 @@
   });
 </script>
 
+<div>UPD: {status} | {updMsg}</div>
+
 <style>
   div {
     margin: 0;
     color: var(--f_med);
   }
 </style>
-
-<div>UPD: {status} | {updMsg}</div>

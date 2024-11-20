@@ -1,12 +1,12 @@
 <script>
   // Libs
-  import Tone from "tone";
-  import getSamples from "../libs/getSamples.js";
-  import { onMount, onDestroy } from "svelte";
+  import Tone from 'tone';
+  import getSamples from '../libs/getSamples.js';
+  import { onMount, onDestroy } from 'svelte';
 
   // Stores
-  import { samplesFolder, tapes } from "../stores/tapes.js";
-  import { currentChannel } from "../stores/ui.js";
+  import { samplesFolder, tapes } from '../stores/tapes.js';
+  import { currentChannel } from '../stores/ui.js';
 
   // Model
   let samples = null;
@@ -27,7 +27,7 @@
     tapes.setPlayer($currentChannel, samples[currentSample], path);
   };
 
-  const onMouseover = i => (currentSample = i);
+  const onMouseover = (i) => (currentSample = i);
 
   function onKeydown(e) {
     if (!e.shiftKey) {
@@ -46,6 +46,27 @@
     if (e.key === `Enter`) onSampleClick();
   }
 </script>
+
+<svelte:window on:keydown={onKeydown} />
+
+<h2>Select Sample</h2>
+<ul>
+  {#if samples}
+    {#each samples as sample, i}
+      <li>
+        <button
+          class:current={i === currentSample}
+          on:mouseover={() => onMouseover(i)}
+          on:click={() => onSampleClick(i)}
+        >
+          {sample}
+        </button>
+      </li>
+    {/each}
+  {:else}
+    <li>LOADING...</li>
+  {/if}
+</ul>
 
 <style>
   h2 {
@@ -68,7 +89,7 @@
   }
 
   button::before {
-    content: "|";
+    content: '|';
     padding-right: 12px;
     color: var(--f_low);
     transition: 0.2s;
@@ -84,23 +105,3 @@
     /* opacity: 0; */
   }
 </style>
-
-<svelte:window on:keydown={onKeydown} />
-
-<h2>Select Sample</h2>
-<ul>
-  {#if samples}
-    {#each samples as sample, i}
-      <li>
-        <button
-          class:current={i === currentSample}
-          on:mouseover={() => onMouseover(i)}
-          on:click={() => onSampleClick(i)}>
-          {sample}
-        </button>
-      </li>
-    {/each}
-  {:else}
-    <li>LOADING...</li>
-  {/if}
-</ul>

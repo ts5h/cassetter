@@ -1,8 +1,13 @@
 <script>
   // Components
-  import Midi from "./Midi.svelte";
-  import Upd from "./Upd.svelte";
+  import Midi from './Midi.svelte';
+  import Upd from './Upd.svelte';
 </script>
+
+<div>
+  <Midi />
+  <!-- <Upd /> -->
+</div>
 
 <style>
   div {
@@ -13,8 +18,3 @@
     background: var(--background);
   }
 </style>
-
-<div>
-  <Midi />
-  <!-- <Upd /> -->
-</div>
