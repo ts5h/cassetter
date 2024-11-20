@@ -14,7 +14,7 @@
     "package-linux": "electron-builder build --linux --x64 --publish never",
     "format": "prettier --write \"src/**/*.{js,svelte}\""
   },
-  "author": "person0b",
+  "author": "algorifer / ts5h",
   "license": "ISC",
   "devDependencies": {
     "@rollup/plugin-commonjs": "^28.0.1",
