@@ -32,8 +32,6 @@ export default {
         if (code === 'a11y-label-has-associated-control') return;
         if (code === 'a11y-no-static-element-interactions') return;
 
-        console.log(code);
-
         handler(warning);
       }
     }),
