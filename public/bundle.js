@@ -1392,7 +1392,7 @@ var app = (function () {
 
 	var selectFolder = async () => {
 	  const paths = await dialog$2.showOpenDialog(app$2.win, {
-	    properties: ['openDirectory']
+	    properties: ['openDirectory'],
 	  });
 
 	  if (!paths) {
@@ -1606,17 +1606,17 @@ var app = (function () {
 	  ],
 	});
 
-	const getDuration = tape =>
+	const getDuration = (tape) =>
 	  !tape.player.loopEnd
 	    ? tape.player.buffer.duration - tape.player.loopStart
 	    : tape.player.loopEnd - tape.player.loopStart;
 
-	const reverse = tape => {
+	const reverse = (tape) => {
 	  const newStart = tape.player.buffer.duration - tape.player.loopEnd;
 	  const newEnd = tape.player.buffer.duration - tape.player.loopStart;
 	  tape.player.loopStart = newStart;
 	  tape.player.loopEnd = newEnd;
-	  tape.ranges.forEach(range => {
+	  tape.ranges.forEach((range) => {
 	    if (range.param === `loopStart`) {
 	      const step = (range.max - range.min) / 35;
 	      range.value = parseInt(newStart / step);
@@ -1627,7 +1627,7 @@ var app = (function () {
 	  });
 	};
 
-	const playOnce = tape => {
+	const playOnce = (tape) => {
 	  if (tape.mode !== `O`) tape.mode = `O`;
 	  tape.player.stop();
 	  if (tape.player.reverse) {
@@ -1637,7 +1637,7 @@ var app = (function () {
 	  tape.player.start(undefined, tape.player.loopStart, getDuration(tape));
 	};
 
-	const playLoop = tape => {
+	const playLoop = (tape) => {
 	  if (tape.mode !== `L`) tape.mode = `L`;
 	  if (tape.player.reverse) {
 	    tape.player.reverse = false;
@@ -1646,7 +1646,7 @@ var app = (function () {
 	  tape.player.start(undefined, tape.player.loopStart);
 	};
 
-	const playOnceReverse = tape => {
+	const playOnceReverse = (tape) => {
 	  if (tape.mode !== `R`) tape.mode = `R`;
 	  tape.player.stop();
 	  if (!tape.player.reverse) {
@@ -1656,7 +1656,7 @@ var app = (function () {
 	  tape.player.start(undefined, tape.player.loopStart, getDuration(tape));
 	};
 
-	const playLoopReverse = tape => {
+	const playLoopReverse = (tape) => {
 	  if (tape.mode !== `Q`) tape.mode = `Q`;
 	  if (!tape.player.reverse) {
 	    tape.player.reverse = true;
@@ -1665,7 +1665,7 @@ var app = (function () {
 	  tape.player.start(undefined, tape.player.loopStart);
 	};
 
-	const stop = tape => {
+	const stop = (tape) => {
 	  if (tape.mode !== `.`) tape.mode = `.`;
 	  tape.player.stop();
 	};
@@ -1725,7 +1725,7 @@ var app = (function () {
 	    feedbackDelay,
 	    limiter,
 	    ...getPlayerSetting(player),
-	  }
+	  };
 	};
 
 	const updateRange = (range, vel, tape) => {
@@ -1738,7 +1738,7 @@ var app = (function () {
 	    tape.player[param] = min + step * vel;
 	  }
 
-	  return { ...range, value: vel, msgValue: base36[vel] }
+	  return { ...range, value: vel, msgValue: base36[vel] };
 	};
 
 	const updateEffect = (effect, vel, tape) => {
@@ -1758,7 +1758,7 @@ var app = (function () {
 	    tape.filterLP.frequency.value = value;
 	  }
 
-	  return { ...effect, value: vel, msgValue: base36[vel] }
+	  return { ...effect, value: vel, msgValue: base36[vel] };
 	};
 
 	function createTapes() {
@@ -1772,25 +1772,25 @@ var app = (function () {
 
 	  const changeRange = (tape, knob, vel) => {
 	    const newRanges = tape.ranges.map((range, i) => {
-	      if (i !== knob - 1) return range
-	      return updateRange(range, vel, tape)
+	      if (i !== knob - 1) return range;
+	      return updateRange(range, vel, tape);
 	    });
-	    return { ...tape, ranges: newRanges }
+	    return { ...tape, ranges: newRanges };
 	  };
 
 	  const changeEffect = (tape, knob, vel) => {
 	    const newEffects = tape.effects.map((effect, i) => {
-	      if (i !== knob - 8) return effect
-	      return updateEffect(effect, vel, tape)
+	      if (i !== knob - 8) return effect;
+	      return updateEffect(effect, vel, tape);
 	    });
 
-	    return { ...tape, effects: newEffects }
+	    return { ...tape, effects: newEffects };
 	  };
 
 	  const msg = (ch, knob, vel) =>
 	    update((tapes) =>
 	      tapes.map((tape, i) => {
-	        if (ch !== i || !tape.player) return tape
+	        if (ch !== i || !tape.player) return tape;
 	        if (knob === 0) {
 	          if (vel === 24) {
 	            playOnce(tape);
@@ -1803,11 +1803,11 @@ var app = (function () {
 	          } else {
 	            stop(tape);
 	          }
-	          return tape
+	          return tape;
 	        }
-	        if (knob > 0 && knob <= 7) return changeRange(tape, knob, vel)
-	        if (knob > 7 && knob <= 12) return changeEffect(tape, knob, vel)
-	        return tape
+	        if (knob > 0 && knob <= 7) return changeRange(tape, knob, vel);
+	        if (knob > 7 && knob <= 12) return changeEffect(tape, knob, vel);
+	        return tape;
 	      })
 	    );
 
@@ -1816,9 +1816,9 @@ var app = (function () {
 	      tapes.map((tape, i) => {
 	        if (i === ch) {
 	          delPlayer(tape);
-	          return defaultTape
+	          return defaultTape;
 	        }
-	        return tape
+	        return tape;
 	      })
 	    );
 
@@ -1857,7 +1857,7 @@ var app = (function () {
 	    setPlayer,
 	    msg,
 	    del,
-	  }
+	  };
 	}
 
 	const { dialog: dialog$1 } = require('@electron/remote');
@@ -1867,7 +1867,7 @@ var app = (function () {
 	  const tapesData = get_store_value(tapes);
 
 	  const processedTapes = tapesData.map((item) => {
-	    if (item.player === null) return null
+	    if (item.player === null) return null;
 
 	    const processedItem = { name: item.name, ranges: {}, effects: {} };
 
@@ -1879,13 +1879,13 @@ var app = (function () {
 	      processedItem.effects[param] = msgValue;
 	    });
 
-	    return processedItem
+	    return processedItem;
 	  });
 
 	  dialog$1
 	    .showSaveDialog(null, { defaultPath: `cassetter` })
 	    .then(({ canceled, filePath }) => {
-	      if (filePath === undefined || canceled) return
+	      if (filePath === undefined || canceled) return;
 
 	      if (filePath.indexOf('.json') < 0) {
 	        filePath += '.json';
@@ -1899,12 +1899,12 @@ var app = (function () {
 	const fs$1 = require('fs');
 
 	const readData = (path) => {
-	  if (!path) return
+	  if (!path) return;
 	  if (!fs$1.existsSync(path)) {
 	    console.warn('Source', 'File does not exist: ' + path);
-	    return
+	    return;
 	  }
-	  return JSON.parse(fs$1.readFileSync(path, 'utf8'))
+	  return JSON.parse(fs$1.readFileSync(path, 'utf8'));
 	};
 
 	const open = async () => {
@@ -1913,11 +1913,11 @@ var app = (function () {
 	    filters: [{ name: 'JSON', extensions: ['json'] }],
 	  });
 
-	  if (canceled) return
+	  if (canceled) return;
 
 	  const data = readData(filePaths[0]);
 
-	  if (!Array.isArray(data)) return
+	  if (!Array.isArray(data)) return;
 
 	  tapes.openSetting(data);
 	};
@@ -1929,17 +1929,17 @@ var app = (function () {
 	const createSubmenu = (isFolder) => [
 	  ...(isFolder
 	    ? [
-	      {
-	        label: 'Save',
-	        click: save,
-	        accelerator: 'CmdOrCtrl+s',
-	      },
-	      {
-	        label: 'Open',
-	        click: open,
-	        accelerator: 'CmdOrCtrl+o',
-	      },
-	    ]
+	        {
+	          label: 'Save',
+	          click: save,
+	          accelerator: 'CmdOrCtrl+s',
+	        },
+	        {
+	          label: 'Open',
+	          click: open,
+	          accelerator: 'CmdOrCtrl+o',
+	        },
+	      ]
 	    : []),
 	  {
 	    label: 'Folder',
@@ -1970,17 +1970,17 @@ var app = (function () {
 	const menuTemplate = (isFolder) => [
 	  ...(process.platform === 'darwin'
 	    ? [
-	      {
-	        label: app$1.getName(),
-	        submenu: createSubmenu(isFolder),
-	      },
-	    ]
+	        {
+	          label: app$1.getName(),
+	          submenu: createSubmenu(isFolder),
+	        },
+	      ]
 	    : [
-	      {
-	        label: 'File',
-	        submenu: createSubmenu(isFolder),
-	      },
-	    ]),
+	        {
+	          label: 'File',
+	          submenu: createSubmenu(isFolder),
+	        },
+	      ]),
 	];
 
 	var createMenu = (isFolder) =>
@@ -2006,17 +2006,17 @@ var app = (function () {
 				attr_dev(path, "stroke-linecap", "round");
 				attr_dev(path, "stroke-linejoin", "round");
 				attr_dev(path, "stroke-width", "15");
-				attr_dev(path, "d", "M60 120a60 60 0 0160-60 60 60 0 0160 60 60 60 0 01-60 60 60 60 0\r\n    01-60-60m180 30a30 30 0 0130-30 30 30 0 0130 30 30 30 0 01-30 30 30 30 0\r\n    01-30-30m-120 30h150m-120");
+				attr_dev(path, "d", "M60 120a60 60 0 0160-60 60 60 0 0160 60 60 60 0 01-60 60 60 60 0\n    01-60-60m180 30a30 30 0 0130-30 30 30 0 0130 30 30 30 0 01-30 30 30 30 0\n    01-30-30m-120 30h150m-120");
 				attr_dev(path, "class", "svelte-l7rx0g");
-				add_location(path, file$c, 44, 2, 651);
+				add_location(path, file$c, 6, 2, 105);
 				attr_dev(svg, "xmlns", "http://www.w3.org/2000/svg");
 				attr_dev(svg, "fill", "none");
 				attr_dev(svg, "baseProfile", "full");
 				attr_dev(svg, "viewBox", "0 0 360 200");
 				attr_dev(svg, "class", "svelte-l7rx0g");
-				add_location(svg, file$c, 39, 0, 542);
+				add_location(svg, file$c, 0, 0, 0);
 				attr_dev(span, "class", "svelte-l7rx0g");
-				add_location(span, file$c, 53, 0, 951);
+				add_location(span, file$c, 16, 0, 398);
 			},
 			l: function claim(nodes) {
 				throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -2100,9 +2100,9 @@ var app = (function () {
 				t2 = space();
 				span = element("span");
 				span.textContent = "(press Ctrl or Cmd + f)";
-				add_location(button, file$b, 24, 0, 416);
+				add_location(button, file$b, 18, 0, 336);
 				attr_dev(span, "class", "svelte-hl76bk");
-				add_location(span, file$b, 25, 0, 481);
+				add_location(span, file$b, 19, 0, 400);
 			},
 			l: function claim(nodes) {
 				throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -2198,22 +2198,22 @@ var app = (function () {
 	const currentKnob = writable(1);
 
 	function createChPlay() {
-	  const {subscribe, set, update} = writable(new Array(16).fill(false));
+	  const { subscribe, set, update } = writable(new Array(16).fill(false));
 
 	  const changeStatus = (channels, ch, status) =>
 	    channels.map((channel, i) => (i === ch ? status : channel));
 
-	  const play = ch => {
-	    update(channels => changeStatus(channels, ch, true));
+	  const play = (ch) => {
+	    update((channels) => changeStatus(channels, ch, true));
 	    const timeout = setTimeout(() => {
-	      update(channels => changeStatus(channels, ch, false));
+	      update((channels) => changeStatus(channels, ch, false));
 	      clearTimeout(timeout);
 	    }, 100);
 	  };
 
 	  return {
 	    subscribe,
-	    play
+	    play,
 	  };
 	}
 
@@ -2334,19 +2334,19 @@ var app = (function () {
 				button1.textContent = "X";
 				attr_dev(span0, "class", "channel svelte-29p2l3");
 				toggle_class(span0, "play", /*$chPlay*/ ctx[2][/*channel*/ ctx[1]]);
-				add_location(span0, file$a, 53, 2, 820);
+				add_location(span0, file$a, 21, 2, 359);
 				attr_dev(span1, "class", "split svelte-29p2l3");
-				add_location(span1, file$a, 58, 2, 966);
+				add_location(span1, file$a, 24, 2, 486);
 				attr_dev(button0, "class", "name svelte-29p2l3");
 				toggle_class(button0, "active", /*$currentChannel*/ ctx[3] === /*channel*/ ctx[1]);
-				add_location(button0, file$a, 59, 2, 998);
+				add_location(button0, file$a, 25, 2, 517);
 				attr_dev(span2, "class", "split svelte-29p2l3");
-				add_location(span2, file$a, 65, 2, 1134);
+				add_location(span2, file$a, 32, 2, 650);
 				attr_dev(button1, "class", "remove");
 				toggle_class(button1, "hide", !/*tape*/ ctx[0].name);
-				add_location(button1, file$a, 66, 2, 1166);
+				add_location(button1, file$a, 33, 2, 681);
 				attr_dev(div, "class", "svelte-29p2l3");
-				add_location(div, file$a, 52, 0, 811);
+				add_location(div, file$a, 20, 0, 351);
 			},
 			l: function claim(nodes) {
 				throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -2519,13 +2519,13 @@ var app = (function () {
 
 	const fs = require('fs');
 
-	var getSamples = path =>
+	var getSamples = (path) =>
 	  new Promise((res, rej) => {
 	    fs.readdir(path, (err, files) => {
 	      res(
 	        files
-	          .filter(file => file.toLowerCase().endsWith('wav'))
-	          .map(file => file.split('.')[0])
+	          .filter((file) => file.toLowerCase().endsWith('wav'))
+	          .map((file) => file.split('.')[0])
 	      );
 	    });
 	  });
@@ -2540,7 +2540,7 @@ var app = (function () {
 		return child_ctx;
 	}
 
-	// (103:2) {:else}
+	// (66:2) {:else}
 	function create_else_block$2(ctx) {
 		let li;
 
@@ -2548,7 +2548,7 @@ var app = (function () {
 			c: function create() {
 				li = element("li");
 				li.textContent = "LOADING...";
-				add_location(li, file$9, 103, 4, 2158);
+				add_location(li, file$9, 66, 4, 1541);
 			},
 			m: function mount(target, anchor) {
 				insert_dev(target, li, anchor);
@@ -2565,14 +2565,14 @@ var app = (function () {
 			block,
 			id: create_else_block$2.name,
 			type: "else",
-			source: "(103:2) {:else}",
+			source: "(66:2) {:else}",
 			ctx
 		});
 
 		return block;
 	}
 
-	// (92:2) {#if samples}
+	// (54:2) {#if samples}
 	function create_if_block$3(ctx) {
 		let each_1_anchor;
 		let each_value = ensure_array_like_dev(/*samples*/ ctx[0]);
@@ -2636,14 +2636,14 @@ var app = (function () {
 			block,
 			id: create_if_block$3.name,
 			type: "if",
-			source: "(92:2) {#if samples}",
+			source: "(54:2) {#if samples}",
 			ctx
 		});
 
 		return block;
 	}
 
-	// (93:4) {#each samples as sample, i}
+	// (55:4) {#each samples as sample, i}
 	function create_each_block$2(ctx) {
 		let li;
 		let button;
@@ -2667,10 +2667,10 @@ var app = (function () {
 				button = element("button");
 				t0 = text(t0_value);
 				t1 = space();
-				attr_dev(button, "class", "svelte-1jq13sv");
+				attr_dev(button, "class", "svelte-1q1j3mf");
 				toggle_class(button, "current", /*i*/ ctx[11] === /*currentSample*/ ctx[1]);
-				add_location(button, file$9, 94, 8, 1929);
-				add_location(li, file$9, 93, 6, 1915);
+				add_location(button, file$9, 56, 8, 1312);
+				add_location(li, file$9, 55, 6, 1299);
 			},
 			m: function mount(target, anchor) {
 				insert_dev(target, li, anchor);
@@ -2709,7 +2709,7 @@ var app = (function () {
 			block,
 			id: create_each_block$2.name,
 			type: "each",
-			source: "(93:4) {#each samples as sample, i}",
+			source: "(55:4) {#each samples as sample, i}",
 			ctx
 		});
 
@@ -2738,10 +2738,10 @@ var app = (function () {
 				t1 = space();
 				ul = element("ul");
 				if_block.c();
-				attr_dev(h2, "class", "svelte-1jq13sv");
-				add_location(h2, file$9, 89, 0, 1828);
-				attr_dev(ul, "class", "svelte-1jq13sv");
-				add_location(ul, file$9, 90, 0, 1852);
+				attr_dev(h2, "class", "svelte-1q1j3mf");
+				add_location(h2, file$9, 51, 0, 1216);
+				attr_dev(ul, "class", "svelte-1q1j3mf");
+				add_location(ul, file$9, 52, 0, 1239);
 			},
 			l: function claim(nodes) {
 				throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -2919,9 +2919,9 @@ var app = (function () {
 				canvas_1 = element("canvas");
 				attr_dev(canvas_1, "class", "svelte-1swa3ap");
 				add_render_callback(() => /*canvas_1_elementresize_handler*/ ctx[7].call(canvas_1));
-				add_location(canvas_1, file$8, 96, 2, 2347);
+				add_location(canvas_1, file$8, 84, 2, 2120);
 				attr_dev(div, "class", "svelte-1swa3ap");
-				add_location(div, file$8, 95, 0, 2338);
+				add_location(div, file$8, 83, 0, 2112);
 			},
 			l: function claim(nodes) {
 				throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -3065,7 +3065,7 @@ var app = (function () {
 					$$invalidate(0, canvas.width = canvasW * 2, canvas);
 					$$invalidate(0, canvas.height = canvasH * 2, canvas);
 					const { width, height } = canvas;
-					const context = canvas.getContext("2d");
+					const context = canvas.getContext('2d');
 					context.clearRect(0, 0, width, height);
 					computeRMS(width);
 					const contextLoopStart = scale($tapes[channel].player.loopStart, 0, $tapes[channel].player.buffer.duration, 0, width);
@@ -3083,8 +3083,8 @@ var app = (function () {
 						const x = i;
 
 						context.fillStyle = contextLoopStart > x || x > contextLoopEnd
-						? "#444444"
-						: "#ffffff";
+						? '#444444'
+						: '#ffffff';
 
 						context.fillRect(x, height / 2 - barHeight / 2, 2, barHeight);
 						context.fill();
@@ -3179,28 +3179,28 @@ var app = (function () {
 				t10 = space();
 				t11 = text(t11_value);
 				attr_dev(span0, "class", "value svelte-1nnwdqk");
-				add_location(span0, file$7, 92, 6, 1877);
+				add_location(span0, file$7, 46, 6, 1250);
 				attr_dev(span1, "class", "knob svelte-1nnwdqk");
 				toggle_class(span1, "current", /*$currentKnob*/ ctx[4] === /*knob*/ ctx[0]);
-				add_location(span1, file$7, 90, 4, 1751);
+				add_location(span1, file$7, 44, 4, 1126);
 				attr_dev(span2, "class", "split svelte-1nnwdqk");
-				add_location(span2, file$7, 94, 4, 1928);
+				add_location(span2, file$7, 48, 4, 1299);
 				attr_dev(label_1, "class", "svelte-1nnwdqk");
 				toggle_class(label_1, "current", /*$currentKnob*/ ctx[4] === /*knob*/ ctx[0]);
-				add_location(label_1, file$7, 95, 4, 1962);
+				add_location(label_1, file$7, 49, 4, 1332);
 				attr_dev(div0, "class", "info svelte-1nnwdqk");
-				add_location(div0, file$7, 89, 2, 1727);
+				add_location(div0, file$7, 43, 2, 1103);
 				attr_dev(input_1, "type", "range");
 				attr_dev(input_1, "min", "0");
 				attr_dev(input_1, "max", "35");
 				input_1.value = /*value*/ ctx[3];
 				attr_dev(input_1, "step", "1");
 				attr_dev(input_1, "class", "svelte-1nnwdqk");
-				add_location(input_1, file$7, 98, 4, 2088);
+				add_location(input_1, file$7, 52, 4, 1455);
 				attr_dev(div1, "class", "range svelte-1nnwdqk");
-				add_location(div1, file$7, 97, 2, 2036);
+				add_location(div1, file$7, 51, 2, 1404);
 				attr_dev(div2, "class", "root svelte-1nnwdqk");
-				add_location(div2, file$7, 88, 0, 1705);
+				add_location(div2, file$7, 42, 0, 1082);
 			},
 			l: function claim(nodes) {
 				throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -3298,7 +3298,7 @@ var app = (function () {
 		let { effect } = $$props;
 		let { knob } = $$props;
 		let input;
-		let sliderArr = new Array(36).fill(".");
+		let sliderArr = new Array(36).fill('.');
 		const onInput = e => tapes.msg($currentChannel, knob, e.target.value);
 		const onMouseover = () => currentKnob.set(knob);
 
@@ -3398,7 +3398,7 @@ var app = (function () {
 			}
 
 			if ($$self.$$.dirty & /*sliderArr, value*/ 12) {
-				$$invalidate(2, sliderArr = sliderArr.map((s, i) => i <= value ? "|" : "."));
+				$$invalidate(2, sliderArr = sliderArr.map((s, i) => i <= value ? '|' : '.'));
 			}
 
 			if ($$self.$$.dirty & /*$currentKnob, knob, input*/ 19) {
@@ -3481,7 +3481,7 @@ var app = (function () {
 		return child_ctx;
 	}
 
-	// (42:2) {#each tape.ranges as range, knob}
+	// (15:2) {#each tape.ranges as range, knob}
 	function create_each_block_1(ctx) {
 		let li;
 		let slider;
@@ -3499,7 +3499,7 @@ var app = (function () {
 			c: function create() {
 				li = element("li");
 				create_component(slider.$$.fragment);
-				add_location(li, file$6, 42, 4, 682);
+				add_location(li, file$6, 15, 4, 245);
 			},
 			m: function mount(target, anchor) {
 				insert_dev(target, li, anchor);
@@ -3533,14 +3533,14 @@ var app = (function () {
 			block,
 			id: create_each_block_1.name,
 			type: "each",
-			source: "(42:2) {#each tape.ranges as range, knob}",
+			source: "(15:2) {#each tape.ranges as range, knob}",
 			ctx
 		});
 
 		return block;
 	}
 
-	// (47:2) {#each tape.effects as effect, knob}
+	// (20:2) {#each tape.effects as effect, knob}
 	function create_each_block$1(ctx) {
 		let li;
 		let slider;
@@ -3560,7 +3560,7 @@ var app = (function () {
 				li = element("li");
 				create_component(slider.$$.fragment);
 				t = space();
-				add_location(li, file$6, 47, 4, 796);
+				add_location(li, file$6, 20, 4, 354);
 			},
 			m: function mount(target, anchor) {
 				insert_dev(target, li, anchor);
@@ -3595,7 +3595,7 @@ var app = (function () {
 			block,
 			id: create_each_block$1.name,
 			type: "each",
-			source: "(47:2) {#each tape.effects as effect, knob}",
+			source: "(20:2) {#each tape.effects as effect, knob}",
 			ctx
 		});
 
@@ -3642,8 +3642,8 @@ var app = (function () {
 					each_blocks[i].c();
 				}
 
-				attr_dev(ul, "class", "svelte-ljdhaf");
-				add_location(ul, file$6, 40, 0, 634);
+				attr_dev(ul, "class", "svelte-f5ne87");
+				add_location(ul, file$6, 13, 0, 199);
 			},
 			l: function claim(nodes) {
 				throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -4112,7 +4112,7 @@ var app = (function () {
 	/* src\components\TapeItem.svelte generated by Svelte v4.2.19 */
 	const file$5 = "src\\components\\TapeItem.svelte";
 
-	// (50:2) {#if $currentChannel === channel}
+	// (20:2) {#if $currentChannel === channel}
 	function create_if_block$1(ctx) {
 		let div;
 		let tapeinfo;
@@ -4129,8 +4129,8 @@ var app = (function () {
 			c: function create() {
 				div = element("div");
 				create_component(tapeinfo.$$.fragment);
-				attr_dev(div, "class", "svelte-1qlla01");
-				add_location(div, file$5, 50, 4, 930);
+				attr_dev(div, "class", "svelte-17bbopt");
+				add_location(div, file$5, 20, 4, 470);
 			},
 			m: function mount(target, anchor) {
 				insert_dev(target, div, anchor);
@@ -4175,7 +4175,7 @@ var app = (function () {
 			block,
 			id: create_if_block$1.name,
 			type: "if",
-			source: "(50:2) {#if $currentChannel === channel}",
+			source: "(20:2) {#if $currentChannel === channel}",
 			ctx
 		});
 
@@ -4204,9 +4204,9 @@ var app = (function () {
 				create_component(tapeheader.$$.fragment);
 				t = space();
 				if (if_block) if_block.c();
-				attr_dev(li, "class", "svelte-1qlla01");
+				attr_dev(li, "class", "svelte-17bbopt");
 				toggle_class(li, "active", /*$currentChannel*/ ctx[2] === /*channel*/ ctx[1]);
-				add_location(li, file$5, 47, 0, 805);
+				add_location(li, file$5, 17, 0, 348);
 			},
 			l: function claim(nodes) {
 				throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -4377,7 +4377,7 @@ var app = (function () {
 		return child_ctx;
 	}
 
-	// (32:2) {#each $tapes as tape, channel}
+	// (23:2) {#each $tapes as tape, channel}
 	function create_each_block(ctx) {
 		let tapeitem;
 		let current;
@@ -4421,7 +4421,7 @@ var app = (function () {
 			block,
 			id: create_each_block.name,
 			type: "each",
-			source: "(32:2) {#each $tapes as tape, channel}",
+			source: "(23:2) {#each $tapes as tape, channel}",
 			ctx
 		});
 
@@ -4453,7 +4453,7 @@ var app = (function () {
 				}
 
 				attr_dev(ul, "class", "svelte-9ccbt1");
-				add_location(ul, file$4, 30, 0, 624);
+				add_location(ul, file$4, 21, 0, 499);
 			},
 			l: function claim(nodes) {
 				throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -4601,7 +4601,7 @@ var app = (function () {
 				t0 = text("MIDI: ");
 				t1 = text(/*cmsg*/ ctx[0]);
 				attr_dev(div, "class", "svelte-138p89o");
-				add_location(div, file$3, 66, 0, 1343);
+				add_location(div, file$3, 59, 0, 1213);
 			},
 			l: function claim(nodes) {
 				throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -4754,7 +4754,7 @@ var app = (function () {
 				t2 = text(" | ");
 				t3 = text(/*updMsg*/ ctx[1]);
 				attr_dev(div, "class", "svelte-138p89o");
-				add_location(div, file$2, 62, 0, 1234);
+				add_location(div, file$2, 55, 0, 1108);
 			},
 			l: function claim(nodes) {
 				throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -4793,7 +4793,7 @@ var app = (function () {
 	function instance$3($$self, $$props, $$invalidate) {
 		let { $$slots: slots = {}, $$scope } = $$props;
 		validate_slots('Upd', slots, []);
-		const dgram = require("dgram");
+		const dgram = require('dgram');
 
 		// Model
 		let status = `none`;
@@ -4817,20 +4817,20 @@ var app = (function () {
 		// Lifecicle
 		onMount(() => {
 			$$invalidate(0, status = `creating...`);
-			const server = dgram.createSocket("udp4");
+			const server = dgram.createSocket('udp4');
 
-			server.on("error", err => {
+			server.on('error', err => {
 				console.error(err);
 				server.close();
 				$$invalidate(1, updMsg = `error`);
 			});
 
-			server.on("message", msg => {
-				onUpdMsg(msg.toString("utf-8"));
-				$$invalidate(1, updMsg = msg.toString("utf-8"));
+			server.on('message', msg => {
+				onUpdMsg(msg.toString('utf-8'));
+				$$invalidate(1, updMsg = msg.toString('utf-8'));
 			});
 
-			server.on("listening", () => {
+			server.on('listening', () => {
 				$$invalidate(0, status = `listening`);
 			});
 
@@ -4897,7 +4897,7 @@ var app = (function () {
 				div = element("div");
 				create_component(midi.$$.fragment);
 				attr_dev(div, "class", "svelte-1iiot0w");
-				add_location(div, file$1, 16, 0, 264);
+				add_location(div, file$1, 6, 0, 106);
 			},
 			l: function claim(nodes) {
 				throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -4967,7 +4967,7 @@ var app = (function () {
 	/* src\components\Layout.svelte generated by Svelte v4.2.19 */
 	const file = "src\\components\\Layout.svelte";
 
-	// (37:2) {:else}
+	// (17:2) {:else}
 	function create_else_block(ctx) {
 		let section;
 		let selectfolder;
@@ -4979,7 +4979,7 @@ var app = (function () {
 				section = element("section");
 				create_component(selectfolder.$$.fragment);
 				attr_dev(section, "class", "tape_folder svelte-3wzge7");
-				add_location(section, file, 37, 4, 793);
+				add_location(section, file, 17, 4, 393);
 			},
 			m: function mount(target, anchor) {
 				insert_dev(target, section, anchor);
@@ -5008,14 +5008,14 @@ var app = (function () {
 			block,
 			id: create_else_block.name,
 			type: "else",
-			source: "(37:2) {:else}",
+			source: "(17:2) {:else}",
 			ctx
 		});
 
 		return block;
 	}
 
-	// (33:2) {#if $samplesFolder}
+	// (13:2) {#if $samplesFolder}
 	function create_if_block(ctx) {
 		let section;
 		let tapelist;
@@ -5027,7 +5027,7 @@ var app = (function () {
 				section = element("section");
 				create_component(tapelist.$$.fragment);
 				attr_dev(section, "class", "tape_list");
-				add_location(section, file, 33, 4, 713);
+				add_location(section, file, 13, 4, 317);
 			},
 			m: function mount(target, anchor) {
 				insert_dev(target, section, anchor);
@@ -5056,7 +5056,7 @@ var app = (function () {
 			block,
 			id: create_if_block.name,
 			type: "if",
-			source: "(33:2) {#if $samplesFolder}",
+			source: "(13:2) {#if $samplesFolder}",
 			ctx
 		});
 
@@ -5089,7 +5089,7 @@ var app = (function () {
 				t = space();
 				create_component(master.$$.fragment);
 				attr_dev(main, "class", "svelte-3wzge7");
-				add_location(main, file, 31, 0, 677);
+				add_location(main, file, 11, 0, 283);
 			},
 			l: function claim(nodes) {
 				throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
