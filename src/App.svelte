@@ -1,15 +1,17 @@
 <script>
   // Utils
-  import createMenu from "./utils/menu";
+  import createMenu from './utils/menu';
 
   // Components
-  import Layout from "./components/Layout.svelte";
+  import Layout from './components/Layout.svelte';
 
   // Stores
-  import { samplesFolder } from "./stores/tapes";
+  import { samplesFolder } from './stores/tapes';
 
   $: createMenu($samplesFolder !== null);
 </script>
+
+<Layout />
 
 <style type="text/scss">
   :global(html) {
@@ -25,7 +27,7 @@
     min-height: 100vh;
     margin: 0;
     padding: 24px;
-    font-family: "Hack", "Courier New", Courier, monospace;
+    font-family: 'Hack', 'Courier New', Courier, monospace;
     font-size: 12px;
     line-height: 1.2;
     background: var(--background);
@@ -52,5 +54,3 @@
     color: var(--f_high);
   }
 </style>
-
-<Layout />

@@ -1,32 +1,32 @@
 // Electron
 const { app, Menu } = require('@electron/remote');
-const shell = require('electron').shell
+const shell = require('electron').shell;
 
-import selectFolder from '../libs/selectFolder'
-import { samplesFolder } from '../stores/tapes'
-import { save } from './save'
-import { open } from './open'
+import selectFolder from '../libs/selectFolder';
+import { samplesFolder } from '../stores/tapes';
+import { save } from './save';
+import { open } from './open';
 
 const createSubmenu = (isFolder) => [
   ...(isFolder
     ? [
-      {
-        label: 'Save',
-        click: save,
-        accelerator: 'CmdOrCtrl+s',
-      },
-      {
-        label: 'Open',
-        click: open,
-        accelerator: 'CmdOrCtrl+o',
-      },
-    ]
+        {
+          label: 'Save',
+          click: save,
+          accelerator: 'CmdOrCtrl+s',
+        },
+        {
+          label: 'Open',
+          click: open,
+          accelerator: 'CmdOrCtrl+o',
+        },
+      ]
     : []),
   {
     label: 'Folder',
     click: async () => {
-      const path = await selectFolder()
-      samplesFolder.set(path)
+      const path = await selectFolder();
+      samplesFolder.set(path);
     },
     accelerator: 'CmdOrCtrl+f',
   },
@@ -46,23 +46,23 @@ const createSubmenu = (isFolder) => [
   { role: 'quit' },
   { role: 'reload' },
   { role: 'toggledevtools' },
-]
+];
 
 const menuTemplate = (isFolder) => [
   ...(process.platform === 'darwin'
     ? [
-      {
-        label: app.getName(),
-        submenu: createSubmenu(isFolder),
-      },
-    ]
+        {
+          label: app.getName(),
+          submenu: createSubmenu(isFolder),
+        },
+      ]
     : [
-      {
-        label: 'File',
-        submenu: createSubmenu(isFolder),
-      },
-    ]),
-]
+        {
+          label: 'File',
+          submenu: createSubmenu(isFolder),
+        },
+      ]),
+];
 
 export default (isFolder) =>
-  Menu.setApplicationMenu(Menu.buildFromTemplate(menuTemplate(isFolder)))
+  Menu.setApplicationMenu(Menu.buildFromTemplate(menuTemplate(isFolder)));

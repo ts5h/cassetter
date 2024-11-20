@@ -1,12 +1,12 @@
 <script>
   // Libs
-  import selectFolder from "../libs/selectFolder.js";
+  import selectFolder from '../libs/selectFolder.js';
 
   // Stores
-  import { samplesFolder } from "../stores/tapes.js";
+  import { samplesFolder } from '../stores/tapes.js';
 
   // Componets
-  import Logo from "./Logo.svelte";
+  import Logo from './Logo.svelte';
 
   // Events
   const onSelectClick = async () => {
@@ -15,12 +15,12 @@
   };
 </script>
 
+<Logo />
+<button on:click={onSelectClick}>Select Samples Folder</button>
+<span>(press Ctrl or Cmd + f)</span>
+
 <style>
   span {
     color: var(--f_low);
   }
 </style>
-
-<Logo />
-<button on:click={onSelectClick}>Select Samples Folder</button>
-<span>(press Ctrl or Cmd + f)</span>

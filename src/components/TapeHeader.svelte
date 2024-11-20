@@ -1,7 +1,7 @@
 <script>
   // Stores
-  import { currentChannel, chPlay } from "../stores/ui.js";
-  import { tapes } from "../stores/tapes.js";
+  import { currentChannel, chPlay } from '../stores/ui.js';
+  import { tapes } from '../stores/tapes.js';
 
   // Model
   export let tape;
@@ -17,6 +17,24 @@
     tapes.del(channel);
   };
 </script>
+
+<div>
+  <span class="channel" class:play={$chPlay[channel]}>
+    !{Number(channel).toString(16).toUpperCase()}0{tape.mode}
+  </span>
+  <span class="split">|</span>
+  <button
+    on:click={onTapeClick}
+    class="name"
+    class:active={$currentChannel === channel}
+  >
+    {tape.name}
+  </button>
+  <span class="split">|</span>
+  <button class="remove" class:hide={!tape.name} on:click={onDelClick}>
+    X
+  </button>
+</div>
 
 <style>
   div {
@@ -49,22 +67,3 @@
     background: var(--b_med);
   }
 </style>
-
-<div>
-  <span class="channel" class:play={$chPlay[channel]}>
-    !{Number(channel)
-      .toString(16)
-      .toUpperCase()}0{tape.mode}
-  </span>
-  <span class="split">|</span>
-  <button
-    on:click={onTapeClick}
-    class="name"
-    class:active={$currentChannel === channel}>
-    {tape.name}
-  </button>
-  <span class="split">|</span>
-  <button class="remove" class:hide={!tape.name} on:click={onDelClick}>
-    X
-  </button>
-</div>

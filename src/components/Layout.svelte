@@ -1,13 +1,26 @@
 <script>
   // Stores
-  import { samplesFolder } from "../stores/tapes.js";
+  import { samplesFolder } from '../stores/tapes.js';
 
   // Components
-  import SelectFolder from "./SelectFolder.svelte";
-  import TapeList from "./TapeList.svelte";
-  import TapeInfo from "./TapeInfo.svelte";
-  import Master from "./Master.svelte";
+  import SelectFolder from './SelectFolder.svelte';
+  import TapeList from './TapeList.svelte';
+  import TapeInfo from './TapeInfo.svelte';
+  import Master from './Master.svelte';
 </script>
+
+<main>
+  {#if $samplesFolder}
+    <section class="tape_list">
+      <TapeList />
+    </section>
+  {:else}
+    <section class="tape_folder">
+      <SelectFolder />
+    </section>
+  {/if}
+  <Master />
+</main>
 
 <style>
   main {
@@ -28,16 +41,3 @@
     width: 100%;
   }
 </style>
-
-<main>
-  {#if $samplesFolder}
-    <section class="tape_list">
-      <TapeList />
-    </section>
-  {:else}
-    <section class="tape_folder">
-      <SelectFolder />
-    </section>
-  {/if}
-  <Master />
-</main>

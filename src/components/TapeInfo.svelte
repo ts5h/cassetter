@@ -1,11 +1,11 @@
 <script>
   // Store
-  import { tapes } from "../stores/tapes.js";
+  import { tapes } from '../stores/tapes.js';
 
   // Components
-  import SelectSample from "./SelectSample.svelte";
-  import TapeViz from "./TapeViz.svelte";
-  import PlayerSettings from "./PlayerSettings.svelte";
+  import SelectSample from './SelectSample.svelte';
+  import TapeViz from './TapeViz.svelte';
+  import PlayerSettings from './PlayerSettings.svelte';
 
   // Model
   export let channel;

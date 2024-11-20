@@ -99,4 +99,4 @@ export default (player) => ({
       msgValue: '0',
     },
   ],
-})
+});
