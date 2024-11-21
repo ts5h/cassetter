@@ -47,4 +47,13 @@ Other knobs range from `0` to `z`.
 - `↑ or ↓` - Selecting a parameter or a sample
 - `← or →` - Change a parameter
 
-## Issues and review are welcome!
+## What I have done after forking (as of November 21, 2024)
+
+- Update the svelte version to 4.x
+- Update relevant dependencies to the latest stable version
+- Update the electron and rollup version
+- Add the prettier to be abel to format the code
+- Change the package manager to yarn (It seems that Yarn was already being used internally, but the README was out of date.)
+
+### Note
+- There is a possibility that tone.js will not work if you use the latest version.
